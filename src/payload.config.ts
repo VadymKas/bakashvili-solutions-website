@@ -7,8 +7,14 @@ import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 
-import { Users } from './config/collections/Users/Users';
-import { Media } from './config/collections/Media/Media';
+import { Users } from './collections/Users/Users';
+import { ImageMedia } from './collections/Media/ImageMedia';
+import { VideoMedia } from './collections/Media/VideoMedia';
+
+import { en } from '@payloadcms/translations/languages/en'
+import { ka } from '@payloadcms/translations/languages/ka'
+import { ru } from '@payloadcms/translations/languages/ru'
+
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,7 +26,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, Media],
+    collections: [Users, ImageMedia, VideoMedia],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
@@ -53,5 +59,9 @@ export default buildConfig({
         ],
         defaultLocale: 'en',
         fallback: true,
+    },
+    i18n: {
+        fallbackLanguage: 'en',
+        supportedLanguages: { en, ka, ru },
     },
 });
