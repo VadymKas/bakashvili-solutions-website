@@ -13,6 +13,7 @@ import { VideoMedia } from './collections/Media/VideoMedia';
 import { Pages } from './collections/Pages';
 
 import { Header } from './globals/Header/config';
+import { Footer } from './globals/Footer/config';
 
 import { en } from '@payloadcms/translations/languages/en';
 import { ru } from '@payloadcms/translations/languages/ru';
@@ -28,7 +29,7 @@ export default buildConfig({
         },
     },
     collections: [Users, ImageMedia, VideoMedia, Pages],
-    globals: [Header],
+    globals: [Header, Footer],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
