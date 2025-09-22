@@ -10,11 +10,11 @@ import sharp from 'sharp';
 import { Users } from './collections/Users/Users';
 import { ImageMedia } from './collections/Media/ImageMedia';
 import { VideoMedia } from './collections/Media/VideoMedia';
+import { Pages } from './collections/Pages';
 
-import { en } from '@payloadcms/translations/languages/en'
-import { ka } from '@payloadcms/translations/languages/ka'
-import { ru } from '@payloadcms/translations/languages/ru'
-
+import { en } from '@payloadcms/translations/languages/en';
+import { ka } from '@payloadcms/translations/languages/ka';
+import { ru } from '@payloadcms/translations/languages/ru';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,7 +26,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, ImageMedia, VideoMedia],
+    collections: [Users, ImageMedia, VideoMedia, Pages],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
@@ -40,7 +40,6 @@ export default buildConfig({
     sharp,
     plugins: [
         payloadCloudPlugin(),
-        // storage-adapter-placeholder
     ],
     localization: {
         locales: [
