@@ -12,8 +12,9 @@ import { ImageMedia } from './collections/Media/ImageMedia';
 import { VideoMedia } from './collections/Media/VideoMedia';
 import { Pages } from './collections/Pages';
 
+import { Header } from './globals/Header/config';
+
 import { en } from '@payloadcms/translations/languages/en';
-import { ka } from '@payloadcms/translations/languages/ka';
 import { ru } from '@payloadcms/translations/languages/ru';
 
 const filename = fileURLToPath(import.meta.url);
@@ -27,6 +28,7 @@ export default buildConfig({
         },
     },
     collections: [Users, ImageMedia, VideoMedia, Pages],
+    globals: [Header],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
@@ -38,9 +40,7 @@ export default buildConfig({
         },
     }),
     sharp,
-    plugins: [
-        payloadCloudPlugin(),
-    ],
+    plugins: [payloadCloudPlugin()],
     localization: {
         locales: [
             {
@@ -61,6 +61,6 @@ export default buildConfig({
     },
     i18n: {
         fallbackLanguage: 'en',
-        supportedLanguages: { en, ka, ru },
+        supportedLanguages: { en, ru },
     },
 });
