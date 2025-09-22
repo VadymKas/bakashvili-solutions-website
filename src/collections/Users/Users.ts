@@ -23,10 +23,20 @@ export const Users: CollectionConfig = {
                 {
                     name: 'name',
                     type: 'text',
+                    label: {
+                        en: 'Name',
+                        ka: 'სახელი',
+                        ru: 'Имя',
+                    },
                 },
                 {
                     name: 'role',
                     type: 'select',
+                    label: {
+                        en: 'Role',
+                        ka: 'როლი',
+                        ru: 'Роль',
+                    },
                     required: true,
                     defaultValue: 'owner',
                     options: [
