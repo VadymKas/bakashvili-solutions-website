@@ -134,6 +134,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
                         ru: 'Метка',
                     },
                     required: true,
+                    localized: true,
                 },
             ],
         });
