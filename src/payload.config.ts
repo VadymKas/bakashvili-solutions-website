@@ -7,10 +7,13 @@ import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 
+import { plugins } from './plugins';
+
 import { Users } from './collections/Users/Users';
 import { ImageMedia } from './collections/Media/ImageMedia';
 import { VideoMedia } from './collections/Media/VideoMedia';
 import { Pages } from './collections/Pages';
+import { Categories } from './collections/Categories';
 
 import { Header } from './globals/Header/config';
 import { Footer } from './globals/Footer/config';
@@ -28,7 +31,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, ImageMedia, VideoMedia, Pages],
+    collections: [Users, ImageMedia, VideoMedia, Pages, Categories],
     globals: [Header, Footer],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
@@ -41,7 +44,10 @@ export default buildConfig({
         },
     }),
     sharp,
-    plugins: [payloadCloudPlugin()],
+    plugins: [
+        payloadCloudPlugin(),
+        ...plugins,
+    ],
     localization: {
         locales: [
             {

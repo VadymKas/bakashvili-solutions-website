@@ -1,8 +1,8 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig } from 'payload';
 
-import { slugField } from "@/fields/slug";
+import { slugField } from '@/fields/slug';
 import { authenticated } from '@/access/authenticated';
-import { generatePreviewPath } from "@/utilities/generatePreviewPath";
+import { generatePreviewPath } from '@/utilities/generatePreviewPath';
 import { populatePublishedAt } from '@/utilities/populatePublishedAt';
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage';
 
@@ -12,10 +12,11 @@ import {
     MetaTitleField,
     OverviewField,
     PreviewField,
-} from "@payloadcms/plugin-seo/fields";
+} from '@payloadcms/plugin-seo/fields';
+import { HeroBlock } from '@/blocks/Hero/config';
 
-export const Pages: CollectionConfig<"pages"> = {
-    slug: "pages",
+export const Pages: CollectionConfig<'pages'> = {
+    slug: 'pages',
     access: {
         create: authenticated,
         delete: authenticated,
@@ -30,12 +31,12 @@ export const Pages: CollectionConfig<"pages"> = {
         slug: true,
     },
     admin: {
-        defaultColumns: ["title", "slug", "updatedAt"],
+        defaultColumns: ['title', 'slug', 'updatedAt'],
         livePreview: {
             url: ({ data, req }) => {
                 const path = generatePreviewPath({
-                    slug: typeof data?.slug === "string" ? data.slug : "",
-                    collection: "pages",
+                    slug: typeof data?.slug === 'string' ? data.slug : '',
+                    collection: 'pages',
                     req,
                 });
 
@@ -44,49 +45,49 @@ export const Pages: CollectionConfig<"pages"> = {
         },
         preview: (data, { req }) =>
             generatePreviewPath({
-                slug: typeof data?.slug === "string" ? data.slug : "",
-                collection: "pages",
+                slug: typeof data?.slug === 'string' ? data.slug : '',
+                collection: 'pages',
                 req,
             }),
-        useAsTitle: "title",
+        useAsTitle: 'title',
     },
     fields: [
         {
-            name: "title",
-            type: "text",
+            name: 'title',
+            type: 'text',
             required: true,
         },
         {
-            type: "tabs",
+            type: 'tabs',
             tabs: [
                 {
                     fields: [
                         {
-                            name: "layout",
-                            type: "blocks",
-                            blocks: [],
+                            name: 'layout',
+                            type: 'blocks',
+                            blocks: [HeroBlock],
                             required: true,
                             admin: {
                                 initCollapsed: true,
                             },
                         },
                     ],
-                    label: "Content",
+                    label: 'Content',
                 },
                 {
-                    name: "meta",
-                    label: "SEO",
+                    name: 'meta',
+                    label: 'SEO',
                     fields: [
                         OverviewField({
-                            titlePath: "meta.title",
-                            descriptionPath: "meta.description",
-                            imagePath: "meta.image",
+                            titlePath: 'meta.title',
+                            descriptionPath: 'meta.description',
+                            imagePath: 'meta.image',
                         }),
                         MetaTitleField({
                             hasGenerateFn: true,
                         }),
                         MetaImageField({
-                            relationTo: "image-media",
+                            relationTo: 'image-media',
                         }),
 
                         MetaDescriptionField({}),
@@ -95,18 +96,18 @@ export const Pages: CollectionConfig<"pages"> = {
                             hasGenerateFn: true,
 
                             // field paths to match the target field for data
-                            titlePath: "meta.title",
-                            descriptionPath: "meta.description",
+                            titlePath: 'meta.title',
+                            descriptionPath: 'meta.description',
                         }),
                     ],
                 },
             ],
         },
         {
-            name: "publishedAt",
-            type: "date",
+            name: 'publishedAt',
+            type: 'date',
             admin: {
-                position: "sidebar",
+                position: 'sidebar',
             },
         },
         ...slugField(),
