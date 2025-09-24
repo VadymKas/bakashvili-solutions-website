@@ -1,21 +1,23 @@
-import React from 'react'
-import './styles.css'
-import { Header } from '@/globals/Header/Component'
-
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
-}
+import React from 'react';
+import './styles.css';
+import { Header } from '@/globals/Header/Component';
+import { Providers } from '@/providers';
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+    const { children } = props;
 
-  return (
-    <html lang="en">
-      <body>
-        <Header />
-        <main>{children}</main>
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <head>
+                <link href="/logo.svg" rel="icon" sizes="32x32" />
+                <link href="/logo.svg" rel="icon" type="image/svg+xml" />
+            </head>
+            <body>
+                <Providers>
+                    <Header />
+                    <main>{children}</main>
+                </Providers>
+            </body>
+        </html>
+    );
 }
