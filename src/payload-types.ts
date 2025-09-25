@@ -68,8 +68,7 @@ export interface Config {
     blocks: {};
     collections: {
         users: User;
-        'image-media': ImageMedia;
-        'video-media': VideoMedia;
+        media: Media;
         pages: Page;
         categories: Category;
         'payload-jobs': PayloadJob;
@@ -81,8 +80,7 @@ export interface Config {
     collectionsJoins: {};
     collectionsSelect: {
         users: UsersSelect<false> | UsersSelect<true>;
-        'image-media': ImageMediaSelect<false> | ImageMediaSelect<true>;
-        'video-media': VideoMediaSelect<false> | VideoMediaSelect<true>;
+        media: MediaSelect<false> | MediaSelect<true>;
         pages: PagesSelect<false> | PagesSelect<true>;
         categories: CategoriesSelect<false> | CategoriesSelect<true>;
         'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
@@ -186,9 +184,9 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "image-media".
+ * via the `definition` "media".
  */
-export interface ImageMedia {
+export interface Media {
     id: number;
     alt: string;
     updatedAt: string;
@@ -263,25 +261,6 @@ export interface ImageMedia {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "video-media".
- */
-export interface VideoMedia {
-    id: number;
-    alt: string;
-    updatedAt: string;
-    createdAt: string;
-    url?: string | null;
-    thumbnailURL?: string | null;
-    filename?: string | null;
-    mimeType?: string | null;
-    filesize?: number | null;
-    width?: number | null;
-    height?: number | null;
-    focalX?: number | null;
-    focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
@@ -293,7 +272,7 @@ export interface Page {
         /**
          * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
          */
-        image?: (number | null) | ImageMedia;
+        image?: (number | null) | Media;
         description?: string | null;
     };
     publishedAt?: string | null;
@@ -312,7 +291,7 @@ export interface Hero {
     description: string;
     items?:
         | {
-              media: number | ImageMedia;
+              media: number | Media;
               id?: string | null;
           }[]
         | null;
@@ -436,12 +415,8 @@ export interface PayloadLockedDocument {
               value: number | User;
           } | null)
         | ({
-              relationTo: 'image-media';
-              value: number | ImageMedia;
-          } | null)
-        | ({
-              relationTo: 'video-media';
-              value: number | VideoMedia;
+              relationTo: 'media';
+              value: number | Media;
           } | null)
         | ({
               relationTo: 'pages';
@@ -543,9 +518,9 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "image-media_select".
+ * via the `definition` "media_select".
  */
-export interface ImageMediaSelect<T extends boolean = true> {
+export interface MediaSelect<T extends boolean = true> {
     alt?: T;
     updatedAt?: T;
     createdAt?: T;
@@ -632,24 +607,6 @@ export interface ImageMediaSelect<T extends boolean = true> {
                         filename?: T;
                     };
           };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "video-media_select".
- */
-export interface VideoMediaSelect<T extends boolean = true> {
-    alt?: T;
-    updatedAt?: T;
-    createdAt?: T;
-    url?: T;
-    thumbnailURL?: T;
-    filename?: T;
-    mimeType?: T;
-    filesize?: T;
-    width?: T;
-    height?: T;
-    focalX?: T;
-    focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

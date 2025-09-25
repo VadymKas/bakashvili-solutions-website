@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
-import type { ImageMedia, Page, Config } from '../payload-types'
+import type { Media, Page, Config } from '../payload-types'
 
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
 
-const getImageURL = (image?: ImageMedia | Config['db']['defaultIDType'] | null) => {
+const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
   let url = serverUrl + '/website-template-OG.webp'

@@ -87,7 +87,7 @@ export const Pages: CollectionConfig<'pages'> = {
                             hasGenerateFn: true,
                         }),
                         MetaImageField({
-                            relationTo: 'image-media',
+                            relationTo: 'media',
                         }),
 
                         MetaDescriptionField({}),

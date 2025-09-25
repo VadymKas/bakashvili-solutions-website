@@ -10,8 +10,7 @@ import sharp from 'sharp';
 import { plugins } from './plugins';
 
 import { Users } from './collections/Users/Users';
-import { ImageMedia } from './collections/Media/ImageMedia';
-import { VideoMedia } from './collections/Media/VideoMedia';
+import { Media } from './collections/Media';
 import { Pages } from './collections/Pages';
 import { Categories } from './collections/Categories';
 
@@ -31,7 +30,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, ImageMedia, VideoMedia, Pages, Categories],
+    collections: [Users, Media, Pages, Categories],
     globals: [Header, Footer],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',

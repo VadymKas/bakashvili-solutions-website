@@ -42,7 +42,7 @@ export const HeaderClient: FC<HeaderClientProps> = ({ data }) => {
             className={cn(
                 'w-full md:block fixed top-0 left-0 z-50 transition-all duration-200',
                 isScrolled
-                    ? 'bg-white/30 backdrop-blur-md text-black'
+                    ? 'bg-white/15 backdrop-blur-md text-black'
                     : 'bg-transparent text-white',
             )}
         >

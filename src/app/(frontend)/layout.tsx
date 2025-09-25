@@ -16,6 +16,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
                 <Providers>
                     <Header />
                     <main>{children}</main>
+                    <div className='h-[600px]'></div>
                 </Providers>
             </body>
         </html>

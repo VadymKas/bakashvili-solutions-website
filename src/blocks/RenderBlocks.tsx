@@ -5,7 +5,7 @@ import Hero from './Hero'
 
 
 const blockComponents = {
-  hero: Hero,  
+  heroBlock: Hero,  
 }
 
 export const RenderBlocks: React.FC<{
