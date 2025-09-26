@@ -20,7 +20,7 @@ const Hero: FC<Props> = ({ title, description, items, className }) => {
                     <h1 className="my-4 font-bold">
                         {title} with
                         <br />
-                        <span className="text-primary/35">OwnInn</span>
+                        <span className="text-primary-foreground/35">OwnInn</span>
                     </h1>
                     <p className="md: max-w-3xl">{description}</p>
                 </div>
