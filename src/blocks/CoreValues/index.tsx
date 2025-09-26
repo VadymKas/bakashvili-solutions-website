@@ -10,7 +10,7 @@ type Props = CoreValuesType & {
 
 const CoreValues: FC<Props> = ({ title, description, values, className }) => {
     return (
-        <section className={cn('py-10 text-center', className)}>
+        <section className={cn('py-10 text-center overflow-hidden', className)}>
             <Container>
                 <h2 className="font-bold capitalize mb-4">{title}</h2>
                 {description && <p className="mb-4">{description}</p>}

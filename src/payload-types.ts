@@ -247,7 +247,7 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
-  layout: (Hero | CoreValues)[];
+  layout: (Hero | CoreValues | AboutUs)[];
   meta?: {
     title?: string | null;
     /**
@@ -298,6 +298,33 @@ export interface CoreValues {
   id?: string | null;
   blockName?: string | null;
   blockType: 'coreValuesBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "About Us".
+ */
+export interface AboutUs {
+  title: string;
+  description: string;
+  media: number | Media;
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?: {
+      relationTo: 'pages';
+      value: number | Page;
+    } | null;
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'aboutUsBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -832,6 +859,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         heroBlock?: T | HeroSelect<T>;
         coreValuesBlock?: T | CoreValuesSelect<T>;
+        aboutUsBlock?: T | AboutUsSelect<T>;
       };
   meta?:
     | T
@@ -877,6 +905,28 @@ export interface CoreValuesSelect {
         title?: boolean;
         description?: boolean;
         id?: boolean;
+      };
+  id?: boolean;
+  blockName?: boolean;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "About Us_select".
+ */
+export interface AboutUsSelect {
+  title?: boolean;
+  description?: boolean;
+  media?: boolean;
+  enableLink?: boolean;
+  link?:
+    | boolean
+    | {
+        type?: boolean;
+        newTab?: boolean;
+        reference?: boolean;
+        url?: boolean;
+        label?: boolean;
+        appearance?: boolean;
       };
   id?: boolean;
   blockName?: boolean;

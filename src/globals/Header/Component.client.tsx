@@ -46,7 +46,7 @@ export const HeaderClient: FC<HeaderClientProps> = ({ data }) => {
                     : 'bg-transparent text-white',
             )}
         >
-            <div className="container mx-auto flex items-center justify-between h-16">
+            <div className="container px-4 mx-auto flex items-center justify-between h-16">
                 <Link href="/">
                     <Logo loading="eager" priority="high" />
                 </Link>

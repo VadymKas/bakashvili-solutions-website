@@ -3,11 +3,13 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import Hero from './Hero'
 import CoreValues from './CoreValues'
+import AboutUs from './AboutUs'
 
 
 const blockComponents = {
   heroBlock: Hero,  
-  coreValuesBlock: CoreValues
+  coreValuesBlock: CoreValues,
+  aboutUsBlock: AboutUs
 }
 
 export const RenderBlocks: React.FC<{
