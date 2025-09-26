@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Container from '@/components/Container';
 import Link from 'next/link';
 import { FaArrowDown } from 'react-icons/fa';

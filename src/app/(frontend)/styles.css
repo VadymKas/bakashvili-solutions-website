@@ -126,7 +126,7 @@ h1 {
 
 h2 {
     @apply text-4xl leading-tight;
-    @apply md:text-6xl md:leading-tight;
+    @apply md:text-5xl md:leading-tight;
 }
 
 h3 {
@@ -142,5 +142,5 @@ h5 {
 }
 
 p {
-    @apply text-lg leading-relaxed;
+    @apply text-base leading-relaxed;
 }

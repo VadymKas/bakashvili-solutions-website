@@ -1,8 +1,8 @@
 import type { Block } from 'payload';
 
-export const OurValuesBlock: Block = {
-    slug: 'ourValuesBlock',
-    interfaceName: 'Our Values',
+export const CoreValuesBlock: Block = {
+    slug: 'coreValuesBlock',
+    interfaceName: 'Core Values',
     fields: [
         {
             name: 'title',

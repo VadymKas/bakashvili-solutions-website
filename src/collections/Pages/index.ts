@@ -14,7 +14,7 @@ import {
     PreviewField,
 } from '@payloadcms/plugin-seo/fields';
 import { HeroBlock } from '@/blocks/Hero/config';
-import { OurValuesBlock } from '@/blocks/OurValues/config';
+import { CoreValuesBlock } from '@/blocks/CoreValues/config';
 
 export const Pages: CollectionConfig<'pages'> = {
     slug: 'pages',
@@ -66,7 +66,7 @@ export const Pages: CollectionConfig<'pages'> = {
                         {
                             name: 'layout',
                             type: 'blocks',
-                            blocks: [HeroBlock, OurValuesBlock],
+                            blocks: [HeroBlock, CoreValuesBlock],
                             required: true,
                             admin: {
                                 initCollapsed: true,
